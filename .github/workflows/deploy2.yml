@@ -1,0 +1,47 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 3️⃣ Get short SHA (optional, useful for tags)
+      - name: Get short SHA
+        id: vars
+        run: echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      # 4️⃣ Build & Push Backend
+      - name: Build & Push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./ai-chatbot
+          file: ./ai-chatbot/Dockerfile
+          push: true
+          tags: vimala92/ai-chatbot-backend:latest
+
+      # 5️⃣ Build & Push Frontend
+      - name: Build & Push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./ai-chatbot/my-app
+          file: ./ai-chatbot/my-app/Dockerfile
+          push: true
+          tags: vimala92/react-frontend:latest
+          cache-from: type=registry,ref=vimala92/react-frontend:cache
+          cache-to: type=registry,ref=vimala92/react-frontend:cache,mode=max
