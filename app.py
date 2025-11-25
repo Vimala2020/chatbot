@@ -10,7 +10,7 @@ app = Flask(__name__)
 # -----------------------------
 # 2️⃣ Credentials
 # -----------------------------
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/apple/Downloads/geminichatbotproject.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = ""
 os.environ['GRPC_VERBOSITY'] = 'ERROR'
 os.environ['GRPC_TRACE'] = ''
 

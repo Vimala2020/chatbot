@@ -2,7 +2,7 @@ import os
 import google.generativeai as genai
 
 # Set credentials
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/apple/Downloads/geminichatbotproject.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = ""
 
 # Optional: suppress gRPC warnings
 os.environ['GRPC_VERBOSITY'] = 'ERROR'

@@ -10,7 +10,7 @@ init(autoreset=True)
 # -----------------------------
 # 2️⃣ Set credentials
 # -----------------------------
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/apple/Downloads/geminichatbotproject.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = ""
 
 # -----------------------------
 # 3️⃣ Suppress gRPC warnings
