@@ -1,2 +1,0 @@
-You: HI
-Bot: Hello! How can I help you today?
